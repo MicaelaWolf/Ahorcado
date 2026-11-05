@@ -1,0 +1,15 @@
+Mesa
+Silla
+Taza
+Llave
+Reloj
+Lápiz
+Libro
+Plato
+Vaso
+Bolsa
+Peine
+Foco
+Cama
+Radio
+Tijera
