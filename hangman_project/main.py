@@ -31,7 +31,7 @@ def main():
     
     game = HangmanGame(word)
     
-    # Actividad 3: Obtener una entrada válida del usuario
+    # Obtener una entrada válida del usuario
     letter = get_valid_guess(game.guessed_letters)
     game.guessed_letters.append(letter)
     
