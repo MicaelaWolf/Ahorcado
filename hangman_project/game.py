@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Modulo que contiene la logica del juego del ahorcado."""
+"""Módulo que contiene la lógica del juego del ahorcado."""
+
+MAX_ERRORS = 6
 
 
 class HangmanGame:
@@ -7,9 +9,11 @@ class HangmanGame:
 
     def __init__(self, word):
         """Inicializa una nueva partida con la palabra objetivo."""
+        if not word or not isinstance(word, str):
+            raise ValueError("word must be a non-empty string")
         self.word = word.lower()
         self.guessed_letters = []
-        self.max_errors = 6
+        self.max_errors = MAX_ERRORS
         self.errors = 0
 
     def display_progress(self):
@@ -33,3 +37,11 @@ class HangmanGame:
             return True
         self.errors += 1
         return False
+
+    def __str__(self):
+        """Devuelve una representación legible del estado del juego."""
+        return (
+            f"HangmanGame(word={self.word!r}, "
+            f"errors={self.errors}/{self.max_errors}, "
+            f"guessed={self.guessed_letters})"
+        )
