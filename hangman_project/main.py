@@ -39,8 +39,7 @@ def main():
     
     game = HangmanGame(word)
     
-    # Bucle simple para probar (el bucle completo será la Actividad 6)
-    while game.errors < game.max_errors:
+    while not game.is_lost() and not game.is_won():
         display_game_state(game)
         letter = get_valid_guess(game.guessed_letters)
         result = game.process_guess(letter)
@@ -51,15 +50,17 @@ def main():
             print(f"Incorrecto. La letra '{letter}' no está en la palabra.")
         
         # Verificar si ganó
-        if "_" not in game.display_progress():
+        if game.is_won():
             display_game_state(game)
             print("¡Ganaste!")
             break
-    
-    if game.errors >= game.max_errors:
-        display_game_state(game)
-        print(f"Perdiste. La palabra era: {game.word}")
 
+        # Verificar si perdió
+        if game.is_lost():
+            display_game_state(game)
+            print("Fin del juego")
+            print(f"La palabra era: {game.word}")
+            break
 
 if __name__ == "__main__":
     main()

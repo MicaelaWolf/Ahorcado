@@ -37,6 +37,17 @@ class HangmanGame:
             return True
         self.errors += 1
         return False
+    
+    def is_won(self):
+        """Comprueba si todas las letras fueron adivinadas."""
+        for letter in self.word:
+            if letter.isalpha() and letter not in self.guessed_letters:
+                return False
+        return True
+
+    def is_lost(self):
+        """Comprueba si se alcanzó el máximo de errores."""
+        return self.errors >= self.max_errors
 
     def __str__(self):
         """Devuelve una representación legible del estado del juego."""
