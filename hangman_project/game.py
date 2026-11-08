@@ -32,6 +32,11 @@ class HangmanGame:
 
     def process_guess(self, letter):
         """Procesa una letra adivinada y devuelve si fue correcta."""
+        letter = letter.lower()
+        if not letter.isalpha():
+            return False
+        if letter in self.guessed_letters:
+            return letter in self.word
         self.guessed_letters.append(letter)
         if letter in self.word:
             return True
